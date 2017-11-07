@@ -24,7 +24,7 @@ degree f p@Poly{_deg = d, _coef = q} =
         in case ddif of
           0 -> degree f p
           _ -> f (d - ddif) <&> \dg -> if dg > d - ddif
-            then error "You can't increase formal _degree!"
+            then error "You can't increase degree!(try with formal)"
             else p {_deg = dg + ddif}
 
 
