@@ -1,4 +1,4 @@
-{-# LANGUAGE RecordWildCards, LambdaCase, Rank2Types #-}
+{-# LANGUAGE RecordWildCards, Rank2Types #-}
 
 module PolyLens where
 
