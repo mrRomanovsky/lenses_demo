@@ -5,16 +5,16 @@ module PolyLens where
 import PolyParser
 import Control.Lens
 
-degree :: Lens' Poly Int
-degree f p@Poly{_coef = q, _deg = d} = f d <&> shift_coef
+formal_degree :: Lens' Poly Int
+formal_degree f p@Poly{_coef = q, _deg = d} = f d <&> shift_coef
   where shift_coef fd
           | fd == d = p
           | fd < d = p {_deg = fd}
           | otherwise = Poly {_coef = replicate (fd - d) 0 ++ q, _deg = fd}
 
 
-formal_degree :: Lens' Poly Int
-formal_degree f p@Poly{_deg = d, _coef = q} = 
+degree :: Lens' Poly Int
+degree f p@Poly{_deg = d, _coef = q} = 
     let ddif = n_zero_idx q
         n_zero_idx [] = error "Polynomial should have at least 1 coefficient!"
         n_zero_idx [x] = 0
